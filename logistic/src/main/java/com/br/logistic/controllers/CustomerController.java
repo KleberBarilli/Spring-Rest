@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.br.logistic.domain.model.Customer;
 import com.br.logistic.domain.repository.CustomerRepository;
-import com.br.logistic.domain.service.CreateCustomerService;
-import com.br.logistic.domain.service.DeleteCustomerService;
+import com.br.logistic.domain.services.customer.CreateCustomerService;
+import com.br.logistic.domain.services.customer.DeleteCustomerService;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

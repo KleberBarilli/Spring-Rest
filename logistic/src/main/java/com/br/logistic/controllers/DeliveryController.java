@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.logistic.domain.model.Delivery;
-import com.br.logistic.domain.service.CreateDeliveryService;
+import com.br.logistic.domain.services.delivery.CreateDeliveryService;
 
 import lombok.AllArgsConstructor;
 

@@ -1,4 +1,4 @@
-package com.br.logistic.domain.service;
+package com.br.logistic.domain.services.customer;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
