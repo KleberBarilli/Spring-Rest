@@ -9,6 +9,5 @@ import com.br.logistic.domain.model.Customer;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
-
         List<Customer> findByNameContaining(String name);
 }
