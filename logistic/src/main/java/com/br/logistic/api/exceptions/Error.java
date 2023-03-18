@@ -1,4 +1,4 @@
-package com.br.logistic.exceptions;
+package com.br.logistic.api.exceptions;
 
 import java.time.LocalDateTime;
 import java.util.List;

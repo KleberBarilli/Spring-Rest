@@ -1,4 +1,4 @@
-package com.br.logistic.domain.model;
+package com.br.logistic.api.domain.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

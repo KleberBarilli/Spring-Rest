@@ -1,9 +1,9 @@
-package com.br.logistic.domain.services.customer;
+package com.br.logistic.api.domain.services.customer;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.br.logistic.domain.repository.CustomerRepository;
+import com.br.logistic.api.domain.repository.CustomerRepository;
 
 import lombok.AllArgsConstructor;
 

@@ -1,4 +1,4 @@
-package com.br.logistic.exceptions;
+package com.br.logistic.api.exceptions;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.br.logistic.domain.exceptions.DomainException;
+import com.br.logistic.api.domain.exceptions.DomainException;
 
 import lombok.AllArgsConstructor;
 
