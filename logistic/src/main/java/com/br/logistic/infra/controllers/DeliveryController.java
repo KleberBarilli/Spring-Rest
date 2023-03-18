@@ -2,7 +2,6 @@ package com.br.logistic.infra.controllers;
 
 import java.util.List;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.br.logistic.domain.model.Delivery;
 import com.br.logistic.domain.repository.DeliveryRepository;
 import com.br.logistic.domain.services.delivery.CreateDeliveryService;
+import com.br.logistic.infra.mappers.DeliveryMapper;
 import com.br.logistic.infra.presenters.DeliveryPresenter;
 
 import jakarta.validation.Valid;
@@ -28,28 +28,24 @@ public class DeliveryController {
 
     private CreateDeliveryService createDeliveryService;
     private DeliveryRepository deliveryRepository;
-    private ModelMapper modelMapper;
+    private DeliveryMapper deliveryMapper;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
 
-    public Delivery createDelivery(@Valid @RequestBody Delivery delivery) {
-        return createDeliveryService.execute(delivery);
+    public DeliveryPresenter createDelivery(@Valid @RequestBody Delivery delivery) {
+        return deliveryMapper.toHTTP(createDeliveryService.execute(delivery));
     }
 
     @GetMapping
-    public List<Delivery> findAll() {
-        return deliveryRepository.findAll();
+    public List<DeliveryPresenter> findAll() {
+        return deliveryMapper.toCollectionHTTP(deliveryRepository.findAll());
     }
 
     @GetMapping("/{deliveryId}")
     public ResponseEntity<DeliveryPresenter> findOne(@PathVariable Long deliveryId) {
         return deliveryRepository.findById(deliveryId)
-                .map(delivery -> {
-                    DeliveryPresenter deliveryPresenter = modelMapper.map(delivery, DeliveryPresenter.class);
-
-                    return ResponseEntity.ok(deliveryPresenter);
-                })
+                .map(delivery -> ResponseEntity.ok(deliveryMapper.toHTTP(delivery)))
                 .orElse(ResponseEntity.notFound().build());
     }
 }

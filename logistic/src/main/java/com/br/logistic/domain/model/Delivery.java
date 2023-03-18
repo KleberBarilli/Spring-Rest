@@ -3,10 +3,8 @@ package com.br.logistic.domain.model;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
-import com.br.logistic.infra.ValidationGroups;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
-import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -18,9 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.groups.ConvertGroup;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,8 +32,6 @@ public class Delivery {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Valid
-    @ConvertGroup(from = Default.class, to = ValidationGroups.CustomerId.class)
     @NotNull
     @ManyToOne
     private Customer customer;
