@@ -2,8 +2,8 @@ package com.br.logistic.domain.model;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.List;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -39,9 +40,10 @@ public class Delivery {
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
 
-    @Column(name = "ordered_at")
     private OffsetDateTime orderedAt;
 
-    @Column(name = "completed_at")
     private OffsetDateTime completedAt;
+
+    @OneToMany(mappedBy = "delivery")
+    private List<Occurrence> occurrences;
 }
