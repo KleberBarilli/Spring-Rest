@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 public class DeliveryPresenter {
     private Long id;
-    private String customerName;
+    private SimpleCustomerPresenter customer;
     private RecipientPresenter recipient;
     private BigDecimal tax;
     private DeliveryStatus status;
