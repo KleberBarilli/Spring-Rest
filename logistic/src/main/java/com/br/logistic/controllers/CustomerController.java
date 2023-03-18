@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,6 +52,15 @@ public class CustomerController {
         }
         customer.setId(customerId);
         customer = customerRepository.save(customer);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{customerId}")
+    public ResponseEntity<Void> delete(@PathVariable Long customerId) {
+        if (!customerRepository.existsById(customerId)) {
+            return ResponseEntity.notFound().build();
+        }
+        customerRepository.deleteById(customerId);
         return ResponseEntity.noContent().build();
     }
 }
