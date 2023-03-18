@@ -2,6 +2,7 @@ package com.br.logistic.infra.controllers;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,6 @@ import com.br.logistic.domain.model.Delivery;
 import com.br.logistic.domain.repository.DeliveryRepository;
 import com.br.logistic.domain.services.delivery.CreateDeliveryService;
 import com.br.logistic.infra.presenters.DeliveryPresenter;
-import com.br.logistic.infra.presenters.RecipientPresenter;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -28,6 +28,7 @@ public class DeliveryController {
 
     private CreateDeliveryService createDeliveryService;
     private DeliveryRepository deliveryRepository;
+    private ModelMapper modelMapper;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -45,20 +46,7 @@ public class DeliveryController {
     public ResponseEntity<DeliveryPresenter> findOne(@PathVariable Long deliveryId) {
         return deliveryRepository.findById(deliveryId)
                 .map(delivery -> {
-                    DeliveryPresenter deliveryPresenter = new DeliveryPresenter();
-                    deliveryPresenter.setId(deliveryId);
-                    deliveryPresenter.setCustomerName(delivery.getCustomer().getName());
-                    deliveryPresenter.setTax(delivery.getTax());
-                    deliveryPresenter.setRecipient(new RecipientPresenter());
-                    deliveryPresenter.getRecipient().setName(delivery.getRecipient().getName());
-                    deliveryPresenter.getRecipient().setNeighborhood(delivery.getRecipient().getNeighborhood());
-                    deliveryPresenter.getRecipient().setStreet(delivery.getRecipient().getStreet());
-                    deliveryPresenter.getRecipient().setNumber(delivery.getRecipient().getNumber());
-                    deliveryPresenter.getRecipient().setStreet(delivery.getRecipient().getStreet());
-                    deliveryPresenter.setTax(delivery.getTax());
-                    deliveryPresenter.setStatus(delivery.getStatus());
-                    deliveryPresenter.setOrderDate(delivery.getOrderedAt());
-                    deliveryPresenter.setOrderCompletedDate(delivery.getCompletedAt());
+                    DeliveryPresenter deliveryPresenter = modelMapper.map(delivery, DeliveryPresenter.class);
 
                     return ResponseEntity.ok(deliveryPresenter);
                 })
