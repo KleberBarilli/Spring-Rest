@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.br.logistic.domain.model.Customer;
 import com.br.logistic.domain.model.Delivery;
 import com.br.logistic.domain.model.DeliveryStatus;
-import com.br.logistic.domain.repository.DeliveryRepository;
+import com.br.logistic.domain.repositories.DeliveryRepository;
 import com.br.logistic.domain.services.customer.FindCustomerService;
 
 import lombok.AllArgsConstructor;

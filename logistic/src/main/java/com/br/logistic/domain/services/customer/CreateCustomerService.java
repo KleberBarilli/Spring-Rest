@@ -5,7 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.br.logistic.domain.exceptions.DomainException;
 import com.br.logistic.domain.model.Customer;
-import com.br.logistic.domain.repository.CustomerRepository;
+import com.br.logistic.domain.repositories.CustomerRepository;
 
 import lombok.AllArgsConstructor;
 

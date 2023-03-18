@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.logistic.domain.model.Delivery;
-import com.br.logistic.domain.repository.DeliveryRepository;
+import com.br.logistic.domain.repositories.DeliveryRepository;
 import com.br.logistic.domain.services.delivery.CreateDeliveryService;
+import com.br.logistic.infra.dtos.DeliveryDto;
 import com.br.logistic.infra.mappers.DeliveryMapper;
 import com.br.logistic.infra.presenters.DeliveryPresenter;
 
@@ -33,8 +34,9 @@ public class DeliveryController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
 
-    public DeliveryPresenter createDelivery(@Valid @RequestBody Delivery delivery) {
-        return deliveryMapper.toHTTP(createDeliveryService.execute(delivery));
+    public DeliveryPresenter createDelivery(@Valid @RequestBody DeliveryDto deliveryDto) {
+        Delivery newDelivery = deliveryMapper.toDomain(deliveryDto);
+        return deliveryMapper.toHTTP(createDeliveryService.execute(newDelivery));
     }
 
     @GetMapping

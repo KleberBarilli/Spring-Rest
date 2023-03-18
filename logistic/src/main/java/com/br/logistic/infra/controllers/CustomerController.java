@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.logistic.domain.model.Customer;
-import com.br.logistic.domain.repository.CustomerRepository;
+import com.br.logistic.domain.repositories.CustomerRepository;
 import com.br.logistic.domain.services.customer.CreateCustomerService;
 import com.br.logistic.domain.services.customer.DeleteCustomerService;
 

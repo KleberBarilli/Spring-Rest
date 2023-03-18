@@ -16,6 +16,6 @@ public class DeliveryPresenter {
     private RecipientPresenter recipient;
     private BigDecimal tax;
     private DeliveryStatus status;
-    private OffsetDateTime orderDate;
-    private OffsetDateTime orderCompletedDate;
+    private OffsetDateTime orderedAt;
+    private OffsetDateTime orderCompletedAt;
 }

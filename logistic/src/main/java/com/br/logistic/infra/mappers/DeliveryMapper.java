@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 import com.br.logistic.domain.model.Delivery;
+import com.br.logistic.infra.dtos.DeliveryDto;
 import com.br.logistic.infra.presenters.DeliveryPresenter;
 
 import lombok.AllArgsConstructor;
@@ -23,5 +24,9 @@ public class DeliveryMapper {
         return deliveries.stream()
                 .map(this::toHTTP)
                 .toList();
+    }
+
+    public Delivery toDomain(DeliveryDto deliveryDto) {
+        return modelMapper.map(deliveryDto, Delivery.class);
     }
 }

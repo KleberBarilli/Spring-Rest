@@ -1,4 +1,4 @@
-package com.br.logistic.domain.repository;
+package com.br.logistic.domain.repositories;
 
 import java.util.List;
 import java.util.Optional;
