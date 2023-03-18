@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.br.logistic.domain.model.Customer;
 import com.br.logistic.domain.repository.CustomerRepository;
+import com.br.logistic.domain.service.CreateCustomerService;
+import com.br.logistic.domain.service.DeleteCustomerService;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -26,6 +28,8 @@ import lombok.AllArgsConstructor;
 public class CustomerController {
 
     private CustomerRepository customerRepository;
+    private CreateCustomerService createCustomerService;
+    private DeleteCustomerService deleteCustomerService;
 
     @GetMapping()
     public List<Customer> findAll() {
@@ -42,7 +46,7 @@ public class CustomerController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Customer create(@Valid @RequestBody Customer customer) {
-        return customerRepository.save(customer);
+        return createCustomerService.execute(customer);
     }
 
     @PutMapping("/{customerId}")
@@ -60,7 +64,7 @@ public class CustomerController {
         if (!customerRepository.existsById(customerId)) {
             return ResponseEntity.notFound().build();
         }
-        customerRepository.deleteById(customerId);
+        deleteCustomerService.execute(customerId);
         return ResponseEntity.noContent().build();
     }
 }
