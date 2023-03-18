@@ -1,6 +1,6 @@
 package com.br.logistic.api.exceptions;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -16,7 +16,7 @@ import lombok.Setter;
 public class Error {
     private Integer status;
     private String title;
-    private LocalDateTime errorAt;
+    private OffsetDateTime errorAt;
     private List<Field> fields;
 
     @AllArgsConstructor

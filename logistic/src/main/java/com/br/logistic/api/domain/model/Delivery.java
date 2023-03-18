@@ -1,7 +1,7 @@
 package com.br.logistic.api.domain.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import com.br.logistic.api.ValidationGroups;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -53,9 +53,9 @@ public class Delivery {
 
     @Column(name = "ordered_at")
     @JsonProperty(access = Access.READ_ONLY)
-    private LocalDateTime orderedAt;
+    private OffsetDateTime orderedAt;
 
     @Column(name = "completed_at")
     @JsonProperty(access = Access.READ_ONLY)
-    private LocalDateTime completedAt;
+    private OffsetDateTime completedAt;
 }

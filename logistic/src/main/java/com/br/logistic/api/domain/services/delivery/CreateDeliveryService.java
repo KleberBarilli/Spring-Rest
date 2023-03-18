@@ -1,6 +1,6 @@
 package com.br.logistic.api.domain.services.delivery;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +26,7 @@ public class CreateDeliveryService {
 
         delivery.setCustomer(customer);
         delivery.setStatus(DeliveryStatus.PENDING);
-        delivery.setOrderedAt(LocalDateTime.now());
+        delivery.setOrderedAt(OffsetDateTime.now());
 
         return deliveryRepository.save(delivery);
     }

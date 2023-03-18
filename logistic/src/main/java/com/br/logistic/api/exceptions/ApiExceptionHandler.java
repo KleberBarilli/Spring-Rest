@@ -1,6 +1,6 @@
 package com.br.logistic.api.exceptions;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +43,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         Error error = new Error();
         error.setStatus(status.value());
         error.setTitle(error.getTitle());
-        error.setErrorAt(LocalDateTime.now());
+        error.setErrorAt(OffsetDateTime.now());
         error.setFields(fields);
         return handleExceptionInternal(ex, error, headers, status, request);
     }
@@ -55,7 +55,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         Error error = new Error();
         error.setStatus(status.value());
         error.setTitle(ex.getMessage());
-        error.setErrorAt(LocalDateTime.now());
+        error.setErrorAt(OffsetDateTime.now());
 
         return handleExceptionInternal(ex, error, new HttpHeaders(), status, request);
     }
