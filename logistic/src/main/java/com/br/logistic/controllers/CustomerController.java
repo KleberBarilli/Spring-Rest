@@ -1,7 +1,6 @@
 package com.br.logistic.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,11 +25,8 @@ public class CustomerController {
 
     @GetMapping("/customers/{customerId}")
     public ResponseEntity<Customer> findOne(@PathVariable Long customerId) {
-        Optional<Customer> customer = customerRepository.findById(customerId);
-
-        if (customer.isPresent()) {
-            return ResponseEntity.ok(customer.get());
-        }
-        return ResponseEntity.notFound().build();
+        return customerRepository.findById(customerId)
+                .map(customer -> ResponseEntity.ok(customer))
+                .orElse(ResponseEntity.notFound().build());
     }
 }
