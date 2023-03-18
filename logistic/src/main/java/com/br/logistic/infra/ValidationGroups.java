@@ -1,4 +1,4 @@
-package com.br.logistic.api;
+package com.br.logistic.infra;
 
 public interface ValidationGroups {
     public interface CustomerId {

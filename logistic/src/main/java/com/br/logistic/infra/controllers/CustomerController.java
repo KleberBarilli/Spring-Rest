@@ -1,4 +1,4 @@
-package com.br.logistic.api.controllers;
+package com.br.logistic.infra.controllers;
 
 import java.util.List;
 
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.br.logistic.api.domain.model.Customer;
-import com.br.logistic.api.domain.repository.CustomerRepository;
-import com.br.logistic.api.domain.services.customer.CreateCustomerService;
-import com.br.logistic.api.domain.services.customer.DeleteCustomerService;
+import com.br.logistic.domain.model.Customer;
+import com.br.logistic.domain.repository.CustomerRepository;
+import com.br.logistic.domain.services.customer.CreateCustomerService;
+import com.br.logistic.domain.services.customer.DeleteCustomerService;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

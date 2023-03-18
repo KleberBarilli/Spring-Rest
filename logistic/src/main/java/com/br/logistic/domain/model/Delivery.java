@@ -1,9 +1,9 @@
-package com.br.logistic.api.domain.model;
+package com.br.logistic.domain.model;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
-import com.br.logistic.api.ValidationGroups;
+import com.br.logistic.infra.ValidationGroups;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;

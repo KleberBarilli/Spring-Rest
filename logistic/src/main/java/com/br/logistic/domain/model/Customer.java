@@ -1,6 +1,6 @@
-package com.br.logistic.api.domain.model;
+package com.br.logistic.domain.model;
 
-import com.br.logistic.api.ValidationGroups;
+import com.br.logistic.infra.ValidationGroups;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

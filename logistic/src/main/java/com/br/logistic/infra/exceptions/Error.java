@@ -1,4 +1,4 @@
-package com.br.logistic.api.exceptions;
+package com.br.logistic.infra.exceptions;
 
 import java.time.OffsetDateTime;
 import java.util.List;
