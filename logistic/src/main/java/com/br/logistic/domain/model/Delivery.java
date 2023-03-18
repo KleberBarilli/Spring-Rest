@@ -3,6 +3,9 @@ package com.br.logistic.domain.model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -37,11 +40,14 @@ public class Delivery {
     private Recipient recipient;
 
     @Enumerated(EnumType.STRING)
+    @JsonProperty(access = Access.READ_ONLY)
     private DeliveryStatus status;
 
     @Column(name = "ordered_at")
+    @JsonProperty(access = Access.READ_ONLY)
     private LocalDateTime orderedAt;
 
     @Column(name = "completed_at")
+    @JsonProperty(access = Access.READ_ONLY)
     private LocalDateTime completedAt;
 }
