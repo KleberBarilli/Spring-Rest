@@ -2,7 +2,7 @@ package com.br.logistic.domain.services.delivery;
 
 import org.springframework.stereotype.Service;
 
-import com.br.logistic.domain.exceptions.DomainException;
+import com.br.logistic.domain.exceptions.DomainNotFoundException;
 import com.br.logistic.domain.model.Delivery;
 import com.br.logistic.domain.repositories.DeliveryRepository;
 
@@ -15,6 +15,7 @@ public class FindOneDeliveryService {
 
     public Delivery execute(Long deliveryId) {
 
-        return deliveryRepository.findById(deliveryId).orElseThrow(() -> new DomainException("Delivery not found!"));
+        return deliveryRepository.findById(deliveryId)
+                .orElseThrow(() -> new DomainNotFoundException("Delivery not found!"));
     }
 }

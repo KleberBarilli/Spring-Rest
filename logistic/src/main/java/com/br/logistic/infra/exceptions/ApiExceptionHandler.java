@@ -19,6 +19,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.br.logistic.domain.exceptions.DomainException;
+import com.br.logistic.domain.exceptions.DomainNotFoundException;
 
 import lombok.AllArgsConstructor;
 
@@ -51,6 +52,18 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(DomainException.class)
     public ResponseEntity<Object> handleDomain(DomainException ex, WebRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
+
+        Error error = new Error();
+        error.setStatus(status.value());
+        error.setTitle(ex.getMessage());
+        error.setErrorAt(OffsetDateTime.now());
+
+        return handleExceptionInternal(ex, error, new HttpHeaders(), status, request);
+    }
+
+    @ExceptionHandler(DomainNotFoundException.class)
+    public ResponseEntity<Object> handleDomainNotFound(DomainNotFoundException ex, WebRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
 
         Error error = new Error();
         error.setStatus(status.value());
