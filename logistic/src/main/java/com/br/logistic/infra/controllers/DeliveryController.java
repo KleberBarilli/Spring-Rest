@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.br.logistic.domain.model.Delivery;
 import com.br.logistic.domain.repositories.DeliveryRepository;
 import com.br.logistic.domain.services.delivery.CreateDeliveryService;
+import com.br.logistic.domain.services.delivery.FinalizeDeliveryService;
 import com.br.logistic.infra.dtos.DeliveryDto;
 import com.br.logistic.infra.mappers.DeliveryMapper;
 import com.br.logistic.infra.presenters.DeliveryPresenter;
@@ -28,6 +30,7 @@ import lombok.AllArgsConstructor;
 public class DeliveryController {
 
     private CreateDeliveryService createDeliveryService;
+    private FinalizeDeliveryService finalizeDeliveryService;
     private DeliveryRepository deliveryRepository;
     private DeliveryMapper deliveryMapper;
 
@@ -49,5 +52,11 @@ public class DeliveryController {
         return deliveryRepository.findById(deliveryId)
                 .map(delivery -> ResponseEntity.ok(deliveryMapper.toHTTP(delivery)))
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PatchMapping("/{deliveryId}/finalize")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void finalizeDelivery(@PathVariable Long deliveryId) {
+        finalizeDeliveryService.execute(deliveryId);
     }
 }

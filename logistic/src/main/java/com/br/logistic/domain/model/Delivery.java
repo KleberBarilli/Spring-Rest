@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
 
+import com.br.logistic.domain.exceptions.DomainException;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -57,5 +59,17 @@ public class Delivery {
         this.getOccurrences().add(occurrence);
 
         return occurrence;
+    }
+
+    public void finalize() {
+        if (!canBeFinalized()) {
+            throw new DomainException("Delivery does not be finalized!");
+        }
+        setStatus(DeliveryStatus.COMPLETED);
+        setCompletedAt(OffsetDateTime.now());
+    }
+
+    public boolean canBeFinalized() {
+        return DeliveryStatus.PENDING.equals(getStatus());
     }
 }
