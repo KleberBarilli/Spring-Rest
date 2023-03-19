@@ -1,5 +1,7 @@
 package com.br.logistic.infra.mappers;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
@@ -15,5 +17,11 @@ public class OccurrenceMapper {
 
     public OccurrencePresenter toHTTP(Occurrence occurrence) {
         return modelMapper.map(occurrence, OccurrencePresenter.class);
+    }
+
+    public List<OccurrencePresenter> toCollectionHTTP(List<Occurrence> occurrences) {
+        return occurrences.stream()
+                .map(this::toHTTP)
+                .toList();
     }
 }

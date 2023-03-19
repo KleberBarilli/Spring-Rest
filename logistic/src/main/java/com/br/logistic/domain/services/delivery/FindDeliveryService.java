@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @Service
-public class FindOneDeliveryService {
+public class FindDeliveryService {
     private DeliveryRepository deliveryRepository;
 
     public Delivery execute(Long deliveryId) {

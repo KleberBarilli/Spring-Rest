@@ -5,7 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.br.logistic.domain.model.Delivery;
 import com.br.logistic.domain.model.Occurrence;
-import com.br.logistic.domain.services.delivery.FindOneDeliveryService;
+import com.br.logistic.domain.services.delivery.FindDeliveryService;
 
 import lombok.AllArgsConstructor;
 
@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 @Service
 public class CreateOccurrenceService {
 
-    private FindOneDeliveryService findOneDeliveryService;
+    private FindDeliveryService findOneDeliveryService;
 
     @Transactional
     public Occurrence execute(Long deliveryId, String description) {
